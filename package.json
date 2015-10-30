@@ -1,0 +1,24 @@
+{
+  "name": "coderivan.github.io",
+  "version": "1.0.0",
+  "description": "Blog &amp;&amp; Note",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoderIvan/coderivan.github.io.git"
+  },
+  "author": "Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoderIvan/coderivan.github.io/issues"
+  },
+  "homepage": "https://github.com/CoderIvan/coderivan.github.io#readme",
+  "dependencies": {
+    "gift": "latest",
+    "markdown-it": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
