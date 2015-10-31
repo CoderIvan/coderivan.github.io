@@ -7,7 +7,3 @@ module.exports = function(repo, dest) {
 		})
 	})
 }
-
-// module.exports('-b source -l -s .', './copy_source').then(function(Repo) {
-// 	console.log('Test')
-// })
