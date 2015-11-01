@@ -5,6 +5,7 @@ var del = require('del')
 
 gulp.task('default', ['clean', 'checkout_markdown', 'markdown_to_html'], function() {
 	gulp.src('app/**').pipe(gulp.dest('_public/'))
+	gulp.src('bower_components/**').pipe(gulp.dest('_public/vender'))
 })
 
 gulp.task('clean', function() {
