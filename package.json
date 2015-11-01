@@ -14,12 +14,10 @@
   },
   "homepage": "https://github.com/CoderIvan/coderivan.github.io#readme",
   "dependencies": {
+    "del": "latest",
     "gift": "latest",
     "gulp": "latest",
-    "markdown-it": "latest"
-  },
-  "devDependencies": {
-    "gulp-markdown": "^1.1.0"
+    "gulp-markdown": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

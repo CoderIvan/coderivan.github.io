@@ -1,0 +1,23 @@
+{
+  "name": "coderivan.github.io",
+  "description": "Blog &amp;&amp; Note",
+  "main": "index.js",
+  "authors": [
+    "Ivan"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/CoderIvan/coderivan.github.io",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-ui-router": "latest"
+  }
+}
