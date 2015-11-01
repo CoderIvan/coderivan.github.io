@@ -3,23 +3,6 @@
   <head>
     <link href="vender/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="vender/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
-    <script src="vender/jquery/dist/jquery.js"></script>
-    <script src="vender/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="vender/angular/angular.js"></script>
-    <script src="vender/angular-ui-router/release/angular-ui-router.js"></script>
-    <script>
-        var myApp = angular.module('myApp', ['ui.router'])
-        myApp.config(function($stateProvider, $urlRouterProvider) {
-          $urlRouterProvider.otherwise("/state1")
-          $stateProvider.state('state1', {
-            url: "/list",
-            templateUrl: ".source_html/CORS.md.html",
-            controller: function($scope) {
-              $scope.items = ["A", "List", "Of", "Items"]
-            }
-          })
-        })
-    </script>
     <style type="text/css">
       body {
           background: #2f2f2f;
@@ -27,8 +10,8 @@
       }
     </style>
   </head>
-  <body>
-    <nav class="navbar">
+  <body >
+    <div class="navbar">
       <div class="container">
         <a class="navbar-brand navbar-left" href="/preview/hooligan">Jekyll Bootstrap</a>
         <ul class="nav nav-pills navbar-nav navbar-left">
@@ -41,12 +24,10 @@
             <li><a href="http://www.twitter.com/username" class="zocial twitter icon" target="_blank">twitter</a></li>
         </ul>
       </div>
-    </nav>
+    </div>
 
     <div class="container">
-      <div class="content" ui-view>
-        <a ui-sref="state1">Show List</a>
-      </div>
+      <div ui-view></div>
       <footer>
         <p>© Name Lastname 2012
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
@@ -54,5 +35,11 @@
         </p>
       </footer>
     </div>
+
+    <script type="text/javascript" src="vender/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vender/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="vender/angular/angular.js"></script>
+    <script type="text/javascript" src="vender/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>
