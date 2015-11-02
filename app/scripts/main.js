@@ -1,5 +1,3 @@
-var module = angular.module('myApp', ['ui.router'])
-
 var archives = [{
 	title: 'AMD_&&_CommonJS'
 }, {
@@ -7,6 +5,8 @@ var archives = [{
 }, {
 	title: 'Docker化方案'
 }]
+
+var module = angular.module('myApp', ['ui.router'])
 
 module.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/')

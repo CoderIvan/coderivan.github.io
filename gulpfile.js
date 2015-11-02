@@ -6,11 +6,13 @@ var ghPages = require('gulp-gh-pages');
 
 gulp.task('default', ['clean', 'checkout_markdown', 'markdown_to_html'], function() {
 	gulp.src('app/**').pipe(gulp.dest('_public/'))
-	gulp.src('bower_components/**/*').pipe(gulp.dest('_public/vender'))
+	gulp.src('bower_components/**').pipe(gulp.dest('_public/vender'))
 })
 
 gulp.task('deploy', ['default'], function() {
-	return gulp.src('_public/**/*').pipe(ghPages())
+	return gulp.src('./_public/**').pipe(ghPages({
+		branch: 'master'
+	}))
 })
 
 gulp.task('clean', function() {
@@ -26,5 +28,3 @@ gulp.task('markdown_to_html', function() {
 		.pipe(markdown())
 		.pipe(gulp.dest('_public/views/archives'))
 })
-
-gulp.start()
