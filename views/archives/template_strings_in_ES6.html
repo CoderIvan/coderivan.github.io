@@ -1,0 +1,44 @@
+<pre><code class="lang-javascript">&#39;use strict&#39;
+
+var util = require(&#39;util&#39;)
+
+let obj = {
+    a: 123456,
+    b: &#39;abcdef&#39;
+}
+
+function test00() {
+    console.log(&#39;[&#39; + obj.a + &#39;] [&#39; + obj.b+ &#39;]&#39;)
+}
+
+function test01() {
+    console.log(&#39;[%s] [%s]&#39;, obj.a, obj.b)
+}
+
+function test02() {
+    console._stdout.write(util.format(&#39;[%s] [%s]\n&#39;, obj.a, obj.b))
+}
+
+function test03() {
+    console.log(`[${obj.a}] [${obj.b}]\n`)
+}
+
+function test04() {
+    console._stdout.write(`[${obj.a}] [${obj.b}]\n`)
+}
+
+var count = 100 * 1000
+;[test00, test01, test02, test03, test04].forEach(function(test) {
+    let now = Date.now()
+    for (let i = 0; i &lt; count; i ++) {
+        test()
+    }
+    var use_time = Date.now() - now
+    console.error(&#39;count = %d &gt;&gt; use time = %d ms &gt;&gt; TPR = %d ms\n&#39;, count, use_time, use_time/count)
+})
+</code></pre>
+<p>count = 100000 &gt;&gt; use time = 936 ms &gt;&gt; TPR = 0.00936 ms</p>
+<p>count = 100000 &gt;&gt; use time = 1470 ms &gt;&gt; TPR = 0.0147 ms</p>
+<p>count = 100000 &gt;&gt; use time = 1177 ms &gt;&gt; TPR = 0.01177 ms</p>
+<p>count = 100000 &gt;&gt; use time = 1071 ms &gt;&gt; TPR = 0.01071 ms</p>
+<p>count = 100000 &gt;&gt; use time = 820 ms &gt;&gt; TPR = 0.0082 ms</p>
