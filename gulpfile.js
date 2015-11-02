@@ -1,11 +1,16 @@
-var child_process = require('child_process')
 var gulp = require('gulp')
+var child_process = require('child_process')
 var markdown = require('gulp-markdown')
 var del = require('del')
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('default', ['clean', 'checkout_markdown', 'markdown_to_html'], function() {
 	gulp.src('app/**').pipe(gulp.dest('_public/'))
-	gulp.src('bower_components/**').pipe(gulp.dest('_public/vender'))
+	gulp.src('bower_components/**/*').pipe(gulp.dest('_public/vender'))
+})
+
+gulp.task('deploy', ['default'], function() {
+	return gulp.src('_public/**/*').pipe(ghPages())
 })
 
 gulp.task('clean', function() {
