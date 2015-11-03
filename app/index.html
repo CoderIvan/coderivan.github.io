@@ -8,16 +8,17 @@
           background: #2f2f2f;
           color: #c6c6c6;
       }
+      .content .nav li a {
+        text-align: center
+      }
     </style>
   </head>
   <body >
     <div class="navbar">
       <div class="container">
-        <a class="navbar-brand navbar-left" href="/preview/hooligan">Jekyll Bootstrap</a>
         <ul class="nav nav-pills navbar-nav navbar-left">
-          <li role="presentation"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">Profile</a></li>
-          <li role="presentation"><a href="#">Messages</a></li>
+          <li role="presentation"><a href="#">Archives</a></li>
+          <li role="presentation"><a href="#">About Me</a></li>
         </ul>
         <ul class="nav nav-pills navbar-nav navbar-right">
             <li><a href="https://www.github.com/username" class="zocial github" target="_blank">github</a></li>
@@ -27,7 +28,7 @@
     </div>
 
     <div class="container">
-      <div ui-view></div>
+      <div class="content" ui-view></div>
       <footer>
         <p>© Ivan 2015</p>
       </footer>
