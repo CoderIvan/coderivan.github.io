@@ -3,19 +3,21 @@
   <head>
     <link href="vender/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="vender/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="vender/github-markdown-css/github-markdown.css" rel="stylesheet">
     <style type="text/css">
-      body {
-          background: #2f2f2f;
-          color: #c6c6c6;
-      }
-      .content .nav li a {
-        text-align: center
+      .markdown-body {
+          min-width: 200px;
+          max-width: 790px;
+          margin: 0 auto;
+          padding: 30px;
+          border: 1px solid #ddd;
+          border-radius: 3px
       }
     </style>
   </head>
   <body >
-    <div class="navbar">
-      <div class="container">
+    <div class="container">
+      <div class="navbar">
         <ul class="nav nav-pills navbar-nav navbar-left">
           <li role="presentation"><a href="#">Archives</a></li>
           <li role="presentation"><a href="#">About Me</a></li>
@@ -27,10 +29,13 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="content" ui-view></div>
+    <div class="container markdown-body">
+      <div ui-view></div>
+    </div>
+    
+     <div class="container">
       <footer>
-        <p>© Ivan 2015</p>
+        <p>© Ivan 2015.11</p>
       </footer>
     </div>
 

@@ -18,6 +18,7 @@
   "dependencies": {
     "bootstrap": "latest",
     "angular": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "github-markdown-css": "latest"
   }
 }

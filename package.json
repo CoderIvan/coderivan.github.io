@@ -2,25 +2,27 @@
   "name": "coderivan.github.io",
   "version": "1.0.0",
   "description": "Blog &amp;&amp; Note",
-  "main": "index.js",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-connect": "latest",
+    "gulp-json-editor": "latest",
+    "gulp-sequence": "latest",
+    "gulp-webserver": "latest",
+    "http-server": "latest",
+    "merge-stream": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CoderIvan/coderivan.github.io.git"
   },
-  "author": "Ivan",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CoderIvan/coderivan.github.io/issues"
   },
-  "homepage": "https://github.com/CoderIvan/coderivan.github.io#readme",
-  "dependencies": {
-    "del": "latest",
-    "gift": "latest",
-    "gulp": "latest",
-    "gulp-gh-pages": "latest",
-    "gulp-markdown": "latest"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "homepage": "https://github.com/CoderIvan/coderivan.github.io#readme"
 }

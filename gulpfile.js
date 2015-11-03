@@ -6,16 +6,42 @@ var glob = require('glob')
 var path = require('path')
 var fs = require('fs')
 var mergeStream = require('merge-stream')
+var connect = require('gulp-connect')
 
-gulp.task('default', ['clean', 'generate_public', 'generate_archives_json'], function() {})
+gulp.task('default', ['generate', 'watch'], function() {})
 
-gulp.task('deploy', ['default'], function() {
+gulp.task('deploy', ['generate'], function() {
 	return gulp.src('./public/**').pipe(ghPages({
 		branch: 'master'
 	}))
 })
 
-gulp.task('generate_public', function() {
+gulp.task('watch', ['generate'], function() {
+	connect.server({
+		port: 8080,
+		root: 'public',
+		livereload: true
+	})
+	return gulp.watch(['./app/**'], ['generate', 'reload'])
+})
+
+var timeout
+gulp.task('reload', ['generate'], function() {
+	if (timeout) {
+		clearTimeout(timeout)
+	}
+	timeout = setTimeout(function() {
+		gulp.src('./public/**').pipe(connect.reload())
+	}, 500)
+})
+
+gulp.task('generate', ['clean', 'generate_public', 'generate_archives_json'])
+
+gulp.task('clean', function(cb) {
+	return del(['public/**'])
+})
+
+gulp.task('generate_public', ['clean'], function() {
 	return mergeStream([
 		gulp.src(['app/**', '!app/views/archives/**']).pipe(gulp.dest('public/')),
 		gulp.src('app/views/archives/**').pipe(markdown()).pipe(gulp.dest('public/views/archives/')),
@@ -23,16 +49,16 @@ gulp.task('generate_public', function() {
 	])
 })
 
-gulp.task('generate_archives_json', ['generate_public'], function() {
-	var files = glob.sync('public/views/archives/*.html')
-	var json = files.map(function(file) {
-		return {
-			title: path.basename(file, '.html')
+gulp.task('generate_archives_json', ['clean', 'generate_public'], function(cb) {
+	glob('public/views/archives/*.html', function(err, files) {
+		if (err) {
+			return cb(err)
 		}
+		var json = files.map(function(file) {
+			return {
+				title: path.basename(file, '.html')
+			}
+		})
+		fs.writeFile('public/scripts/archives.json', JSON.stringify(json), cb)
 	})
-	fs.writeFileSync('public/scripts/archives.json', JSON.stringify(json))
-})
-
-gulp.task('clean', function() {
-	del.sync(['public'])
 })
