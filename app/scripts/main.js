@@ -1,26 +1,39 @@
-var module = angular.module('myApp', ['ui.router'])
+angular
+	.module('myApp', ['ui.router', 'ngAnimate'])
+	.run(['$rootScope', '$state', function($rootScope, $state) {
+		$rootScope.$state = $state
+	}])
+	.config(function($stateProvider, $urlRouterProvider) {
 
-module.config(function($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('/')
 
-	$urlRouterProvider.otherwise('/archives')
-
-	$stateProvider.state('list', {
-		url: '/archives',
-		templateUrl: 'views/table_of_content.html',
-		controller: function($scope, $http) {
-			$http({
-				method: 'GET',
-				url: 'scripts/archives.json'
-			}).then(function successCallback(response) {
-				$scope.archives = response.data
-			}, function errorCallback(response) {
-				console.error(response)
-			})
-		}
-	}).state('detail', {
-		url: '/archives/:title',
-		templateUrl: function($stateParams) {
-			return 'views/archives/' + $stateParams.title + '.html'
-		}
+		$stateProvider.state('home', {
+			url: '/',
+			template: '<h1>HelloWorld</h1>'
+		}).state('archives', {
+			abstract: true,
+			url: '/archives',
+			template: '<ui-view/>'
+		}).state('archives.list', {
+			url: '',
+			templateUrl: 'views/table_of_content.html',
+			controller: function($scope, $http) {
+				$http({
+					method: 'GET',
+					url: 'scripts/archives.json'
+				}).then(function successCallback(response) {
+					$scope.archives = response.data
+				}, function errorCallback(response) {
+					console.error(response)
+				})
+			}
+		}).state('archives.detail', {
+			url: '/:title',
+			templateUrl: function($stateParams) {
+				return 'views/archives/' + $stateParams.title + '.html'
+			}
+		}).state('about', {
+			url: '/about',
+			template: '<h1>About Me</h1>'
+		})
 	})
-})

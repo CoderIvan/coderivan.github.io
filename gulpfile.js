@@ -32,7 +32,7 @@ gulp.task('reload', ['generate'], function() {
 	}
 	timeout = setTimeout(function() {
 		gulp.src('./public/**').pipe(connect.reload())
-	}, 500)
+	}, 1000)
 })
 
 gulp.task('generate', ['clean', 'generate_public', 'generate_archives_json'])
