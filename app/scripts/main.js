@@ -11,11 +11,7 @@ angular
 			url: '/',
 			template: '<h1>HelloWorld</h1>'
 		}).state('archives', {
-			abstract: true,
 			url: '/archives',
-			template: '<ui-view/>'
-		}).state('archives.list', {
-			url: '',
 			templateUrl: 'views/table_of_content.html',
 			controller: function($scope, $http) {
 				$http({

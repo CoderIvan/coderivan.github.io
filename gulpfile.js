@@ -25,20 +25,16 @@ gulp.task('watch', ['generate'], function() {
 	return gulp.watch(['./app/**'], ['generate', 'reload'])
 })
 
-var timeout
 gulp.task('reload', ['generate'], function() {
-	if (timeout) {
-		clearTimeout(timeout)
-	}
-	timeout = setTimeout(function() {
-		gulp.src('./public/**').pipe(connect.reload())
-	}, 1000)
+	gulp.src('./public/**').pipe(connect.reload())
 })
 
 gulp.task('generate', ['clean', 'generate_public', 'generate_archives_json'])
 
 gulp.task('clean', function(cb) {
-	return del(['public/**'])
+	return del(['public/**'], {
+		force: true
+	})
 })
 
 gulp.task('generate_public', ['clean'], function() {

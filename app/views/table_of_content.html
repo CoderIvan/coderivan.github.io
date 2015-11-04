@@ -1,5 +1,11 @@
-<ul class="nav">
-  <li ng-repeat="archive in archives">
-    <a ui-sref="archives.detail({title:archive.title})">{{archive.title}}</a>
-  </li>
-</ul>
+<div class="col-md-4">
+	<ul class="nav">
+		<li ng-repeat="archive in archives">
+			<a ui-sref="archives.detail({title:archive.title})">{{archive.title}}</a>
+		</li>
+	</ul>
+</div>
+
+<div class="col-md-8 markdown-body">
+	<div ui-view class="slide"></div>
+</div>

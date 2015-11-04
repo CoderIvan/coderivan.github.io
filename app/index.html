@@ -13,6 +13,30 @@
           border: 1px solid #ddd;
           border-radius: 3px
       }
+      .slide.ng-leave {
+        position: relative;
+      }
+      .slide.ng-enter {
+        position: absolute;
+      }
+      .slide.ng-enter, .slide.ng-leave {
+        -webkit-transition: -webkit-transform 0.3s ease-in, opacity 0.3s ease-in;
+           -moz-transition: -moz-transform 0.3s ease-in, opacity 0.3s ease-in;
+             -o-transition: -o-transform 0.3s ease-in, opacity 0.3s ease-in;
+                transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+      }
+      .slide.ng-enter, .slide.ng-leave.ng-leave-active {
+        -webkit-transform: scaleX(0.0001);
+             -o-transform: scaleX(0.0001);
+                transform: scaleX(0.0001);
+        opacity: 0;
+      }
+      .slide, .slide.ng-enter.ng-enter-active {
+        -webkit-transform: scaleX(1);
+             -o-transform: scaleX(1);
+                transform: scaleX(1);
+        opacity: 1;
+      }
     </style>
   </head>
   <body >
@@ -20,7 +44,7 @@
       <div class="container">
         <a class="navbar-brand" ui-sref="home">Home</a>
         <ul class="nav navbar-nav">
-          <li ng-class="{active: $state.includes('archives')}"><a ui-sref="archives.list">Archives</a></li>
+          <li ng-class="{active: $state.includes('archives')}"><a ui-sref="archives">Archives</a></li>
           <li ui-sref-active="active"><a ui-sref="about">About Me</a></li>
         </ul>
       </div>
@@ -28,7 +52,7 @@
 
     <div>
       <div class="container">
-        <div ui-view></div>
+        <div ui-view class="slide"></div>
       </div>
     </div>
 
