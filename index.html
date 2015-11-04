@@ -3,43 +3,64 @@
   <head>
     <link href="vender/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="vender/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="vender/github-markdown-css/github-markdown.css" rel="stylesheet">
     <style type="text/css">
-      body {
-          background: #2f2f2f;
-          color: #c6c6c6;
+      .markdown-body {
+          min-width: 200px;
+          max-width: 790px;
+          margin: 0 auto;
+          padding: 30px;
+          border: 1px solid #ddd;
+          border-radius: 3px
+      }
+      .slide.ng-leave {
+        position: relative;
+      }
+      .slide.ng-enter {
+        position: absolute;
+      }
+      .slide.ng-enter, .slide.ng-leave {
+        -webkit-transition: -webkit-transform 0.3s ease-in, opacity 0.3s ease-in;
+           -moz-transition: -moz-transform 0.3s ease-in, opacity 0.3s ease-in;
+             -o-transition: -o-transform 0.3s ease-in, opacity 0.3s ease-in;
+                transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+      }
+      .slide.ng-enter, .slide.ng-leave.ng-leave-active {
+        -webkit-transform: scaleX(0.0001);
+             -o-transform: scaleX(0.0001);
+                transform: scaleX(0.0001);
+        opacity: 0;
+      }
+      .slide, .slide.ng-enter.ng-enter-active {
+        -webkit-transform: scaleX(1);
+             -o-transform: scaleX(1);
+                transform: scaleX(1);
+        opacity: 1;
       }
     </style>
   </head>
   <body >
-    <div class="navbar">
+    <div class="navbar navbar-default">
       <div class="container">
-        <a class="navbar-brand navbar-left" href="/preview/hooligan">Jekyll Bootstrap</a>
-        <ul class="nav nav-pills navbar-nav navbar-left">
-          <li role="presentation"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">Profile</a></li>
-          <li role="presentation"><a href="#">Messages</a></li>
-        </ul>
-        <ul class="nav nav-pills navbar-nav navbar-right">
-            <li><a href="https://www.github.com/username" class="zocial github" target="_blank">github</a></li>
-            <li><a href="http://www.twitter.com/username" class="zocial twitter icon" target="_blank">twitter</a></li>
+        <a class="navbar-brand" ui-sref="home">Home</a>
+        <ul class="nav navbar-nav">
+          <li ng-class="{active: $state.includes('archives')}"><a ui-sref="archives">Archives</a></li>
+          <li ui-sref-active="active"><a ui-sref="about">About Me</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="container">
-      <div ui-view></div>
-      <footer>
-        <p>© Name Lastname 2012
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://github.com/dhulihan/hooligan" target="_blank">The Hooligan Theme</a>
-        </p>
-      </footer>
+    <div>
+      <div class="container">
+        <div ui-view class="slide"></div>
+      </div>
     </div>
 
     <script type="text/javascript" src="vender/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vender/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="vender/angular/angular.js"></script>
     <script type="text/javascript" src="vender/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vender/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>
