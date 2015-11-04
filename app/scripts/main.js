@@ -27,6 +27,9 @@ angular
 			url: '/:title',
 			templateUrl: function($stateParams) {
 				return 'views/archives/' + $stateParams.title + '.html'
+			},
+			controller: function($scope) {
+				$scope.isMarkdown = true
 			}
 		}).state('about', {
 			url: '/about',
